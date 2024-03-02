@@ -41,18 +41,11 @@ app.use(xss());
 app.use(mongoSanitize());
 
 
-app.use(morgan('tiny'))
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
 app.use(express.static('./public'))
 app.use(fileUpload())
 
-app.get('/',(req,res)=>{
-    res.send('testing')
-})
-app.get('/api/v1',(req,res)=>{
-    res.send(req.cookies)
-})
 
 app.use('/api/v1/auth/', authRouter);
 app.use('/api/v1/users', userRouter)
